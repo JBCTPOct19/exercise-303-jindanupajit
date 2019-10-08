@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+</head>
+<body>
+<p>[ <span><a href="/task/create/form">New Task</a></span>
+   | <span><a href="/task/all">List All Tasks</a></span>
+   ]
+</p>
+<p style="width: 100%" th:each="task : ${tasks}">
+    <span th:text="${task.name}"><b>Task Name</b></span>
+    <span th:text="${task.date}">Due Date</span>
+    <span th:text="${task.priority}">Priority</span>
+    [ <span><a th:href="@{/task/{id}/update/form(id=${task.id})}">Update</a></span>
+    | <span><a th:href="@{/task/{id}/delete(id=${task.id})}">Delete</a></span>
+    | <span><a th:href="@{/task/{id}(id=${task.id})}">View</a></span>
+    ]
+</p>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Mutation</title>
+</head>
+<body>
+<form action="#" method="post" th:action="@{/task/mutate}" th:object="${task}">
+<input type="hidden" th:field="*{id}">
+
+    <p>Name: <input placeholder="Task Name" th:field="*{name}" type="text">
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span></p>
+
+
+    <p>Due: <input  th:field="*{date}"
+                    type="text">
+        <span th:if="${#fields.hasErrors('date')}"
+              th:errors="*{date}"></span></p>
+    <p>Priority: <input th:field="*{priority}" type="text">
+        <span  th:if="${#fields.hasErrors('priority')}"
+               th:errors="*{priority}"></span></p>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
